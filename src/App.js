@@ -30,13 +30,13 @@ function App() {
 
   return (
     <div className="container">
-      {error && <div>{error}</div>}
+      {error && <div className="error">{error}</div>}
       <table>
         <thead className="table-head">
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th className="bold" style={{ color: 'red' }}>Name</th>
+            <th className="bold" style={{ color: 'red' }}>Email</th>
+            <th className="bold" style={{ color: 'red' }}>Role</th>
           </tr>
         </thead>
         <tbody>
@@ -54,7 +54,7 @@ function App() {
       </table>
       <div className="pagination">
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
-        <span className="current-page">Page {currentPage}</span>
+        <span className="current-page">{currentPage}</span>
         <button onClick={handleNextPage}>Next</button>
       </div>
     </div>
