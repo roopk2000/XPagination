@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './App.css'; // Import CSS file
 
 function App() {
   const [data, setData] = useState([]);
@@ -28,10 +29,10 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       {error && <div>{error}</div>}
       <table>
-        <thead>
+        <thead className="table-head">
           <tr>
             <th>Name</th>
             <th>Email</th>
@@ -40,16 +41,20 @@ function App() {
         </thead>
         <tbody>
           {data.slice((currentPage - 1) * 10, currentPage * 10).map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>{item.role}</td>
-            </tr>
+            <React.Fragment key={index}>
+              <tr>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.role}</td>
+              </tr>
+              <tr className="line"></tr>
+            </React.Fragment>
           ))}
         </tbody>
       </table>
-      <div>
+      <div className="pagination">
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+        <span className="current-page">Page {currentPage}</span>
         <button onClick={handleNextPage}>Next</button>
       </div>
     </div>
